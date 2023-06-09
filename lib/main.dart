@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:gluon_flutter_tech_test/features/widget_test/widget_test_page.dart';
+import 'package:gluon_flutter_tech_test/resources/strings.dart';
 
 void main() {
   runApp(const MyApp());
@@ -10,15 +12,14 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Technical Test Lev. 1',
+      title: Strings.appTitle,
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
       routes: {
-        '/': (context) =>
-            const MyHomePage(title: 'Flutter Technical Test Lev. 1'),
-        // '/widget-test': (context) => const WidgetTestPage(),
+        '/': (context) => const MyHomePage(title: Strings.appTitle),
+        '/widget-test': (context) => const WidgetTestPage(),
         // '/logic-test': (context) => const LogicTestPage(),
       },
     );
@@ -42,12 +43,12 @@ class MyHomePage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             ElevatedButton(
-              onPressed: () {},
-              child: const Text('Go to Widget Test page'),
+              onPressed: () => Navigator.of(context).pushNamed('/widget-test'),
+              child: const Text('Go to ${Strings.widgetTestPageTitle}'),
             ),
             ElevatedButton(
               onPressed: () {},
-              child: const Text('Go to Logic Test page'),
+              child: const Text('Go to ${Strings.logicTestPageTitle}'),
             ),
           ],
         ),
