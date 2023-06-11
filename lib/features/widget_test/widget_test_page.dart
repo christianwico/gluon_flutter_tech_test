@@ -34,6 +34,10 @@ class _WidgetTestPageState extends State<WidgetTestPage> {
                     title: Strings.usernameFormFieldTitle,
                     initialValue: _value,
                     validator: _usernameFormFieldValidator,
+                    prefixIcon: Icon(
+                      Icons.person,
+                      color: Theme.of(context).colorScheme.outline,
+                    ),
                   ),
                 ),
                 CommonWidgets.verticalSpacer(),
