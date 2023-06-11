@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gluon_flutter_tech_test/features/widget_test/widget_test_page.dart';
 import 'package:gluon_flutter_tech_test/resources/strings.dart';
+import 'package:gluon_flutter_tech_test/resources/theme.dart';
 
 void main() {
   runApp(const MyApp());
@@ -13,10 +14,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: Strings.appTitle,
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
+      theme: primaryTheme,
       routes: {
         '/': (context) => const MyHomePage(title: Strings.appTitle),
         '/widget-test': (context) => const WidgetTestPage(),
