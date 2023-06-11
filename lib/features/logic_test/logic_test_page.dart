@@ -26,6 +26,8 @@ class _LogicTestPageState extends State<LogicTestPage> {
   }
 
   Widget _buildBody() {
+    const maxOutputLines = 5;
+
     return Padding(
       padding: const EdgeInsets.all(Dimens.unit16),
       child: Column(
@@ -49,7 +51,7 @@ class _LogicTestPageState extends State<LogicTestPage> {
             title: Strings.logicTestPageOutputTitle,
             readOnly: true,
             prefixIcon: const Icon(Icons.edit),
-            maxLines: 5,
+            maxLines: maxOutputLines,
           ),
           CommonWidgets.verticalSpacer(height: Dimens.unit16),
           ElevatedButton(
@@ -64,7 +66,7 @@ class _LogicTestPageState extends State<LogicTestPage> {
   void _onSaved(String? value) {
     if (!_formKey.currentState!.validate()) {
       setState(() {
-        _outputController.text = 'INVALID INPUT';
+        _outputController.text = Strings.invalidInputErrorMessage;
       });
 
       return;
@@ -83,17 +85,20 @@ class _LogicTestPageState extends State<LogicTestPage> {
   }
 
   String? _inputFormFieldValidator(String? value) {
+    const minValue = 0;
+    const maxValue = 999999999999999;
+
     if (value != null && value.isNotEmpty) {
       final int? numericValue = int.tryParse(value);
       if (numericValue != null) {
         return null;
-      } else if (numericValue! < 0 || numericValue >= 999999999999999) {
-        return 'Input must be between 0 and 999999999999999';
+      } else if (numericValue! < minValue || numericValue >= maxValue) {
+        return Strings.outOfBoundsErrorMessage(minValue, maxValue);
       } else {
-        return 'Input must be numeric';
+        return Strings.inputMustBeNumericErrorMessage;
       }
     } else {
-      return 'Input cannot be empty';
+      return Strings.inputMustNotBeEmptyErrorMessage;
     }
   }
 }

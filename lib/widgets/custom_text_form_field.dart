@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:gluon_flutter_tech_test/widgets/common_widgets.dart';
 
+/// A custom [TextFormField] with a title, and prefix and validation icons.
+/// If a [validator] is supplied, a suffix icon will be displayed and will show
+/// validation errors on tap.
 class CustomTextFormField extends StatefulWidget {
   const CustomTextFormField({
     super.key,
@@ -91,6 +94,7 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
           color: themeData.colorScheme.error,
         ),
         suffixIconColor: themeData.colorScheme.error,
+        // Show the custom suffix icon only if there is an error.
         suffixIcon: state.hasError
             ? Tooltip(
                 triggerMode: TooltipTriggerMode.tap,
