@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:gluon_flutter_tech_test/widgets/common_widgets.dart';
 
 class CustomTextFormField extends StatefulWidget {
@@ -10,6 +11,10 @@ class CustomTextFormField extends StatefulWidget {
     this.onSaved,
     this.keyboardType,
     this.prefixIcon,
+    this.readOnly = false,
+    this.controller,
+    this.maxLines,
+    this.inputFormatters,
   });
 
   final String? title;
@@ -18,6 +23,10 @@ class CustomTextFormField extends StatefulWidget {
   final void Function(String?)? onSaved;
   final TextInputType? keyboardType;
   final Widget? prefixIcon;
+  final bool readOnly;
+  final TextEditingController? controller;
+  final int? maxLines;
+  final List<TextInputFormatter>? inputFormatters;
 
   @override
   State<CustomTextFormField> createState() => _CustomTextFormFieldState();
@@ -69,7 +78,11 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
 
     return TextFormField(
       key: _formKey,
+      readOnly: widget.readOnly,
+      maxLines: widget.maxLines,
+      controller: widget.controller,
       keyboardType: widget.keyboardType,
+      inputFormatters: widget.inputFormatters,
       decoration: InputDecoration(
         prefixIcon: widget.prefixIcon,
         hintText: widget.title,

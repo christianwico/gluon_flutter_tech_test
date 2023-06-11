@@ -1,5 +1,5 @@
 class NumberToWordConverter {
-  String wordify(int number) {
+  static String wordify(int number) {
     int i = 0;
     String result = '';
 
@@ -71,7 +71,7 @@ class NumberToWordConverter {
     return result;
   }
 
-  String _mapDigitToOnes(int digit) {
+  static String _mapDigitToOnes(int digit) {
     return switch (digit) {
       1 => 'one',
       2 => 'two',
@@ -86,7 +86,7 @@ class NumberToWordConverter {
     };
   }
 
-  String _mapDigitToTens(int digit) {
+  static String _mapDigitToTens(int digit) {
     return switch (digit) {
       2 => 'twenty',
       3 => 'thirty',
@@ -100,7 +100,7 @@ class NumberToWordConverter {
     };
   }
 
-  String _mapDigitToTeens(int digit) {
+  static String _mapDigitToTeens(int digit) {
     return switch (digit) {
       0 => 'ten',
       1 => 'eleven',
@@ -116,7 +116,7 @@ class NumberToWordConverter {
     };
   }
 
-  String _mapDigitToThousands(int digit) {
+  static String _mapDigitToThousands(int digit) {
     return switch (digit) {
       0 => '',
       1 => 'thousand',
