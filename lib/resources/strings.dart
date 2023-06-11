@@ -17,4 +17,13 @@ class Strings {
   static const logicTestPageInputTitle = 'Input';
   static const logicTestPageOutputTitle = 'Output';
   static const logicTestPageConvert = 'Convert';
+
+  // Error messages
+  static const invalidInputErrorMessage = 'INVALID INPUT';
+  static const inputMustBeNumericErrorMessage = 'Input must be numeric';
+  static const inputMustNotBeEmptyErrorMessage = 'Input must not be empty';
+
+  static String outOfBoundsErrorMessage(int min, int max) {
+    return 'Input must be between $min and $max';
+  }
 }

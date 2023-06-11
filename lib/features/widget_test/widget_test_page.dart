@@ -22,39 +22,45 @@ class _WidgetTestPageState extends State<WidgetTestPage> {
       onTap: FocusScope.of(context).unfocus,
       child: Scaffold(
         appBar: AppBar(title: const Text(Strings.widgetTestPageTitle)),
-        body: Padding(
-          padding: const EdgeInsets.all(Dimens.unit16),
-          child: Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Form(
-                  key: _formKey,
-                  child: CustomTextFormField(
-                    title: Strings.usernameFormFieldTitle,
-                    initialValue: _value,
-                    validator: _usernameFormFieldValidator,
-                    prefixIcon: Icon(
-                      Icons.person,
-                      color: Theme.of(context).colorScheme.outline,
-                    ),
-                  ),
+        body: _buildBody(),
+      ),
+    );
+  }
+
+  Widget _buildBody() {
+    return Padding(
+      padding: const EdgeInsets.all(Dimens.unit16),
+      child: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Form(
+              key: _formKey,
+              child: CustomTextFormField(
+                title: Strings.usernameFormFieldTitle,
+                initialValue: _value,
+                validator: _usernameFormFieldValidator,
+                prefixIcon: Icon(
+                  Icons.person,
+                  color: Theme.of(context).colorScheme.outline,
                 ),
-                CommonWidgets.verticalSpacer(),
-                ElevatedButton(
-                  onPressed: () {
-                    if (_formKey.currentState!.validate()) {
-                      _formKey.currentState!.save();
-                    }
-                  },
-                  child: const Text(Strings.submit),
-                ),
-              ],
+              ),
             ),
-          ),
+            CommonWidgets.verticalSpacer(),
+            ElevatedButton(
+              onPressed: _onSubmitTapped,
+              child: const Text(Strings.submit),
+            ),
+          ],
         ),
       ),
     );
+  }
+
+  void _onSubmitTapped() {
+    if (_formKey.currentState!.validate()) {
+      _formKey.currentState!.save();
+    }
   }
 
   String? _usernameFormFieldValidator(String? value) {
