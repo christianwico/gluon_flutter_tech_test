@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gluon_flutter_tech_test/features/logic_test/logic_test_page.dart';
 import 'package:gluon_flutter_tech_test/features/widget_test/widget_test_page.dart';
 import 'package:gluon_flutter_tech_test/resources/strings.dart';
 import 'package:gluon_flutter_tech_test/resources/theme.dart';
@@ -18,7 +19,7 @@ class MyApp extends StatelessWidget {
       routes: {
         '/': (context) => const MyHomePage(title: Strings.appTitle),
         '/widget-test': (context) => const WidgetTestPage(),
-        // '/logic-test': (context) => const LogicTestPage(),
+        '/logic-test': (context) => const LogicTestPage(),
       },
     );
   }
@@ -45,7 +46,7 @@ class MyHomePage extends StatelessWidget {
               child: const Text('Go to ${Strings.widgetTestPageTitle}'),
             ),
             ElevatedButton(
-              onPressed: () {},
+              onPressed: () => Navigator.of(context).pushNamed('/logic-test'),
               child: const Text('Go to ${Strings.logicTestPageTitle}'),
             ),
           ],

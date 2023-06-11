@@ -8,12 +8,16 @@ class CustomTextFormField extends StatefulWidget {
     this.initialValue,
     this.validator,
     this.onSaved,
+    this.keyboardType,
+    this.prefixIcon,
   });
 
   final String? title;
   final String? initialValue;
   final String? Function(String?)? validator;
   final void Function(String?)? onSaved;
+  final TextInputType? keyboardType;
+  final Widget? prefixIcon;
 
   @override
   State<CustomTextFormField> createState() => _CustomTextFormFieldState();
@@ -65,8 +69,9 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
 
     return TextFormField(
       key: _formKey,
+      keyboardType: widget.keyboardType,
       decoration: InputDecoration(
-        prefixIcon: Icon(Icons.person, color: outlineColor),
+        prefixIcon: widget.prefixIcon,
         hintText: widget.title,
         errorStyle: TextStyle(
           fontSize: 0.0,

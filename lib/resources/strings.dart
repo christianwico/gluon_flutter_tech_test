@@ -9,4 +9,12 @@ class Strings {
 
   // Action strings
   static const submit = 'Submit';
+
+  // Logic Test Page strings
+  static const logicTestPageHeader =
+      'Please enter an integer number in the "Input" box and tap on "Convert" '
+      'to see the equivalent in words appear in the "Output" box.';
+  static const logicTestPageInputTitle = 'Input';
+  static const logicTestPageOutputTitle = 'Output';
+  static const logicTestPageConvert = 'Convert';
 }
